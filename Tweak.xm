@@ -18,7 +18,7 @@ BOOL _enabled;
 
 %hook SBIconLegibilityLabelView
 -(NSArray *)subviews {
- id origSubviews = %orig; //origSubviews is what this method would have originally returned, ex the original subviews for this UIView - credit to Snoolie for the code snippet :3
+ id origSubviews = %orig; //origSubviews is what this method would have originally returned, ex the original subviews for this UIView
  //loop through the original subviews
  for (id i in origSubviews){
   //SBIconLegibilityLabelView should only have UIImageView's - but just in case, check if the subview we are looping with has setTintColor method.
@@ -38,5 +38,6 @@ BOOL _enabled;
 -(id)layer {
  id origLayer = %orig; //our origLayer is what this method would have originally returned
  origLayer.cornerRadius = 2.0; //set corner radius to 2.0
+ return origLayer;
 }
 %end
