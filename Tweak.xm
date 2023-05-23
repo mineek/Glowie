@@ -71,8 +71,8 @@ BOOL _enabled;
 -(UIColor *)backgroundColor {
  return [UIColor purpleColor];
 }
--(id)layer {
- id origLayer = %orig; //our origLayer is what this method would have originally returned
+-(CALayer*)layer {
+ CALayer* origLayer = %orig; //our origLayer is what this method would have originally returned
  origLayer.cornerRadius = 2.0; //set corner radius to 2.0
  return origLayer;
 }
