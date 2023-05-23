@@ -15,3 +15,17 @@ BOOL _enabled;
 		NSLog(@"[Glowie] Disabled, heading out!");
 	}
 }
+
+%hook SBIconLegibilityLabelView {
+  -(CGColor*)_createCGColorWithAlpha : (CGFloat);
+  return ^(CGColor =);
+  _preferences = [[NSUserDefaults alloc] initWithSuiteName:@"com.mineek.glowieprefs"];
+  _enabled = [_preferences objectForKey:@"enabled"] ? [[_preferences objectForKey:@"enabled"] boolValue] : YES;
+  if (_enabled) {
+    @property (nonatomic, copy, readwrite) UIColor;
+    *backgroundColor = UIExtendedSRGBColorSpace 1 0 1 0.644175;
+    % init();
+  } else {
+    return ();
+  }
+}
