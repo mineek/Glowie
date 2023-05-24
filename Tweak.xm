@@ -53,27 +53,16 @@ BOOL _enabled;
 }
 
 %hook SBIconLegibilityLabelView
--(NSArray *)subviews {
- id origSubviews = %orig; //origSubviews is what this method would have originally returned, ex the original subviews for this UIView
- //loop through the original subviews
- for (UIImageView* i in origSubviews){
-  //SBIconLegibilityLabelView should only have UIImageView's - but just in case, check if the subview we are looping with has setTintColor method.
-  if ([i respondsToSelector:@selector(setTintColor:)]) {
-   [i setTintColor:[UIColor purpleColor]];
-   //check that this UIImageView... well... actually has an image :P
-   if (i.image) {
-    i.image = [i.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-   }
-  }
- }
- return origSubviews;
+//this method is for _UILegibilityView and we return the color we want the label to be
+-(UIColor *)drawingColor {
+ [self setBackgroundColor:[UIColor orangeColor]];
+ return [UIColor blueColor];
 }
--(UIColor *)backgroundColor {
- return [UIColor purpleColor];
-}
--(CALayer*)layer {
- CALayer* origLayer = %orig; //our origLayer is what this method would have originally returned
- origLayer.cornerRadius = 2.0; //set corner radius to 2.0
+-(CALayer *)layer {
+ CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
+ origLayer.cornerRadius = 4.0; //set corner radius to 2.0
+ origLayer.borderWidth = 2.0;
+ origLayer.borderColor = [UIColor redColor].CGColor;
  return origLayer;
 }
 %end
