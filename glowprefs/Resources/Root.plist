@@ -15,8 +15,14 @@
 			<string>enabled</string>
 			<key>label</key>
 			<string>Enabled</string>
-			</dict>
-			<dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+        	<string>Label Background Color Opacity</string>
+		</dict>
+		<dict>
 			<key>cell</key>
             <string>PSSliderCell</string>
             <key>default</key>
@@ -32,11 +38,37 @@
             <key>key</key>
             <string>backgroundColorTransparency</string>
             <key>showValue</key>
-                    <true/>
+            <true/>
             <key>isSegmented</key>
-                    <false/>
-            <key>label</key>
-            <string>Label Background Color Opacity</string>
+            <false/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Colors</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>AmpSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>online.transrights.glowprefs</string>
+			<key>label</key>
+			<string>Fill Color</string>
+			<key>subtitle</key>
+			<string>Override normal color. Swipe cell to set color</string>
+			<key>key</key>
+			<string>overrideColor</string>
+			<key>id</key>
+			<string>overrideColor</string>
+			<key>height</key>
+			<string>85</string>
+			<key>PostNotification</key>
+			<string>online.transrights.glowprefs/preferences.changed</string>
 		</dict>
 	</array>
 	<key>title</key>

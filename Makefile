@@ -6,7 +6,7 @@ PREFIX = $(THEOS)/toolchain/linux/usr/bin/
 SYSROOT = $(THEOS)/sdks/iPhoneOS13.7.sdk
 INSTALL_TARGET_PROCESSES = SpringBoard
 THEOS_PACKAGE_SCHEME = rootless
-
+Glow_EXTRA_FRAMEWORKS += Alderis
 
 include $(THEOS)/makefiles/common.mk
 

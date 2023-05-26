@@ -6,4 +6,4 @@ Description: Change your iOS label colors with Glowie!
 Maintainer: Kota
 Author: Kota & Snoolie & Mineek
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000)
+Depends: mobilesubstrate (>= 0.9.5000), ws.hbang.alderis (>= 1.1)

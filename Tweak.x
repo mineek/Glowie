@@ -1,32 +1,20 @@
-@import Alderis;
 #include <Foundation/Foundation.h>
 #include <UIKit/UIKit.h>
 #include <objc/runtime.h>
-#import "iOSPalette/Palette.h"
-#import "iOSPalette/UIImage+Palette.h"
-#import "ColorFlowAPI.h"
-#import "AlderisColorPicker.h"
 /*
 Vars
 */
 CAGradientLayer *gradientLayer;
-SBFloatingDockPlatterView *floatingDockView;
-SBDockView *stockDockView;
 UIColor *colorOne;
 UIColor *colorTwo;
 UIColor *borderColor;
 /*
 Prefs
 */
-static BOOL usingFloatingDock;
-static NSInteger gradientDirection;
-static CGFloat dockAlpha;
 static NSString *colorOneString;
 static NSString *colorTwoString;
-static BOOL overrideCornerRadius;
-static NSInteger cornerRadius;
 static NSString *borderColorString;
-static NSInteger borderWidth;
+static BOOL overrideColor;
 
 /*
 
@@ -52,6 +40,13 @@ Headers
 @property (assign,nonatomic) double strength;                               //@synthesize strength=_strength - In the implementation block
 @property (assign,nonatomic) BOOL hidesImage;                               //@synthesize hidesImage=_hidesImage - In the implementation block
 @property (nonatomic,readonly) BOOL usesColorFilters; 
+@property (retain, nonatomic) CALayer *fillLayer;
+@property (retain, nonatomic) CALayer *pinLayer; 
+@property (copy, nonatomic) UIColor *pinColor;
+@property (nonatomic) CGFloat pinColorAlpha; 
+@property (nonatomic) CGFloat bodyColorAlpha;
+- (id)_labelborderFillColor;
+- (id)_labelTextColor;
 @end
 
 @interface SBIconLegibilityLabelView : _UILegibilityView
@@ -70,11 +65,11 @@ BOOL _enabled;
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
-CGFloat setBackgroundColorTransparency = [preferences floatForKey:@"backgroundColorTransparency"];
-    if (!(setBackgroundColorTransparency >= 1)){
-        setBackgroundColorTransparency = 100;
+CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundColorTransparency"];
+    if (!(setBackgroundColorTransparency >= 0)){
+        setBackgroundColorTransparency = 1;
     }
-[self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 setBackgroundColorTransparency]];
+[self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:(setBackgroundColorTransparency / 100.0)]];
  return [UIColor cyanColor];
 }
 -(CALayer *)layer {
@@ -94,4 +89,9 @@ CGFloat setBackgroundColorTransparency = [preferences floatForKey:@"backgroundCo
 	} else {
 		NSLog(@"[Glow] Disabled, heading out!");
 	}
+}
+
+static void loadPreferences(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+	NSNumber *overrideColorValue = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"overrideColor" inDomain:domain];
+	overrideColor = (overrideColorValue) ? [overrideColorValue boolValue] : NO;
 }
