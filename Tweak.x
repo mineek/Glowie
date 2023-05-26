@@ -1,6 +1,32 @@
+@import Alderis;
 #include <Foundation/Foundation.h>
 #include <UIKit/UIKit.h>
 #include <objc/runtime.h>
+#import "iOSPalette/Palette.h"
+#import "iOSPalette/UIImage+Palette.h"
+#import "ColorFlowAPI.h"
+#import "AlderisColorPicker.h"
+/*
+Vars
+*/
+CAGradientLayer *gradientLayer;
+SBFloatingDockPlatterView *floatingDockView;
+SBDockView *stockDockView;
+UIColor *colorOne;
+UIColor *colorTwo;
+UIColor *borderColor;
+/*
+Prefs
+*/
+static BOOL usingFloatingDock;
+static NSInteger gradientDirection;
+static CGFloat dockAlpha;
+static NSString *colorOneString;
+static NSString *colorTwoString;
+static BOOL overrideCornerRadius;
+static NSInteger cornerRadius;
+static NSString *borderColorString;
+static NSInteger borderWidth;
 
 /*
 
@@ -44,8 +70,11 @@ BOOL _enabled;
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
- [self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.5]];
-
+CGFloat setBackgroundColorTransparency = [preferences floatForKey:@"backgroundColorTransparency"];
+    if (!(setBackgroundColorTransparency >= 1)){
+        setBackgroundColorTransparency = 100;
+    }
+[self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 setBackgroundColorTransparency]];
  return [UIColor cyanColor];
 }
 -(CALayer *)layer {
@@ -56,7 +85,6 @@ BOOL _enabled;
  return origLayer;
 }
 %end
-
 %ctor {
 	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glow"];
 	_enabled = [_preferences boolForKey:@"enabled"];
