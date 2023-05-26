@@ -17,6 +17,7 @@
 			<string>Enabled</string>
 		</dict>
 		<dict>
+<<<<<<< HEAD
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
@@ -69,6 +70,28 @@
 			<string>85</string>
 			<key>PostNotification</key>
 			<string>online.transrights.glowprefs/preferences.changed</string>
+=======
+			<key>cell</key>
+            		<string>PSSliderCell</string>
+            		<key>default</key>
+            		<real>100</real>
+            		<key>defaults</key>
+            		<string>online.transrights.glowprefs</string>
+            		<key>max</key>
+            		<real>100</real>
+            		<key>min</key>
+            		<real>1</real>
+            		<key>id</key>
+            		<string>backgroundColorTransparency</string>
+            		<key>key</key>
+            		<string>backgroundColorTransparency</string>
+            		<key>showValue</key>
+                    	<true/>
+            		<key>isSegmented</key>
+                    	<false/>
+            		<key>label</key>
+            		<string>Label Background Color Opacity</string>
+>>>>>>> 90d0e32ecf1c7f617f5254b4212f9515d594ea3e
 		</dict>
 	</array>
 	<key>title</key>
