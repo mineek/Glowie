@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>glowieprefs</string>
+	<string>Glowprefs</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.mineek.glowieprefs</string>
+	<string>online.transrights.glow</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

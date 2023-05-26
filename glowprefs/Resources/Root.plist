@@ -10,7 +10,7 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.mineek.glowieprefs</string>
+			<string>online.transrights.glow</string>
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
@@ -18,6 +18,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Glowie</string>
+	<string>Glow</string>
 </dict>
 </plist>

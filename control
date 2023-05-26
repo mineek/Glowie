@@ -1,9 +1,9 @@
-Package: com.mineek.glowie
+Package: online.transrights.glow
 Name: Glowie
-Version: 0.0.1
+Version: 0.0.2
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
-Maintainer: Mineek
-Author: Mineek
+Description: Change your iOS label colors with Glowie!
+Maintainer: Kota
+Author: Kota & Snoolie & Mineek
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)

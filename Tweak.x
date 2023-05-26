@@ -34,35 +34,38 @@ Headers
 
 /*
 
-Glowie
+Glow
 
 */
-
+/*
 NSUserDefaults *_preferences;
 BOOL _enabled;
 
 %ctor {
-	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"com.mineek.glowieprefs"];
+	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glowprefs"];
 	_enabled = [_preferences objectForKey:@"enabled"] ? [[_preferences objectForKey:@"enabled"] boolValue] : YES;
 	if(_enabled) {
-		NSLog(@"[Glowie] Enabled");
+		NSLog(@"[Glow] Enabled");
 		%init();
 	} else {
-		NSLog(@"[Glowie] Disabled, heading out!");
+		NSLog(@"[Glow] Disabled, heading out!");
 	}
 }
+*/
+
 
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
- [self setBackgroundColor:[UIColor orangeColor]];
- return [UIColor blueColor];
+ [self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.5]];
+
+ return [UIColor cyanColor];
 }
 -(CALayer *)layer {
  CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
  origLayer.cornerRadius = 4.0; //set corner radius to 2.0
- origLayer.borderWidth = 2.0;
- origLayer.borderColor = [UIColor redColor].CGColor;
+ origLayer.borderWidth = 1.0;
+ origLayer.borderColor = [UIColor systemPinkColor].CGColor;
  return origLayer;
 }
 %end
