@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Glowprefs</string>
+	<string>glowprefs</string>
 	<key>CFBundleIdentifier</key>
 	<string>online.transrights.glow</string>
 	<key>CFBundleInfoDictionaryVersion</key>

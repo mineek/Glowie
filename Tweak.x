@@ -37,21 +37,8 @@ Headers
 Glow
 
 */
-/*
 NSUserDefaults *_preferences;
 BOOL _enabled;
-
-%ctor {
-	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glowprefs"];
-	_enabled = [_preferences objectForKey:@"enabled"] ? [[_preferences objectForKey:@"enabled"] boolValue] : YES;
-	if(_enabled) {
-		NSLog(@"[Glow] Enabled");
-		%init();
-	} else {
-		NSLog(@"[Glow] Disabled, heading out!");
-	}
-}
-*/
 
 
 %hook SBIconLegibilityLabelView
@@ -69,3 +56,14 @@ BOOL _enabled;
  return origLayer;
 }
 %end
+
+%ctor {
+	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glowprefs"];
+	_enabled = [_preferences boolForKey:@"enabled"];
+	if(_enabled) {
+		NSLog(@"[Glow] Enabled");
+		%init();
+	} else {
+		NSLog(@"[Glow] Disabled, heading out!");
+	}
+}

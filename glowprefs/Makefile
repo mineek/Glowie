@@ -3,12 +3,12 @@ THEOS_PACKAGE_SCHEME = rootless
 
 include $(THEOS)/makefiles/common.mk
 
-BUNDLE_NAME = Glowprefs
+BUNDLE_NAME = glowprefs
 
-Glowprefs_FILES = GLOWRootListController.m
-Glowprefs_FRAMEWORKS = UIKit
-Glowprefs_PRIVATE_FRAMEWORKS = Preferences
-Glowprefs_INSTALL_PATH = /Library/PreferenceBundles
-Glowprefs_CFLAGS = -fobjc-arc
+glowprefs_FILES = GLOWRootListController.m
+glowprefs_FRAMEWORKS = UIKit
+glowprefs_PRIVATE_FRAMEWORKS = Preferences
+glowprefs_INSTALL_PATH = /Library/PreferenceBundles
+glowprefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk

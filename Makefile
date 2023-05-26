@@ -17,5 +17,5 @@ Glow_FILES = $(wildcard *.x)
 Glow_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-# SUBPROJECTS += Glowprefs
-# include $(THEOS_MAKE_PATH)/aggregate.mk
+SUBPROJECTS += glowprefs
+include $(THEOS_MAKE_PATH)/aggregate.mk
