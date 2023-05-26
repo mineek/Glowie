@@ -58,7 +58,7 @@ BOOL _enabled;
 %end
 
 %ctor {
-	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glowprefs"];
+	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glow"];
 	_enabled = [_preferences boolForKey:@"enabled"];
 	if(_enabled) {
 		NSLog(@"[Glow] Enabled");
