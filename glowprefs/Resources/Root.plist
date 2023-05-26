@@ -15,28 +15,28 @@
 			<string>enabled</string>
 			<key>label</key>
 			<string>Enabled</string>
-			</dict>
-			<dict>
+		</dict>
+		<dict>
 			<key>cell</key>
-            <string>PSSliderCell</string>
-            <key>default</key>
-            <real>100</real>
-            <key>defaults</key>
-            <string>online.transrights.glowprefs</string>
-            <key>max</key>
-            <real>100</real>
-            <key>min</key>
-            <real>1</real>
-            <key>id</key>
-            <string>backgroundColorTransparency</string>
-            <key>key</key>
-            <string>backgroundColorTransparency</string>
-            <key>showValue</key>
-                    <true/>
-            <key>isSegmented</key>
-                    <false/>
-            <key>label</key>
-            <string>Label Background Color Opacity</string>
+            		<string>PSSliderCell</string>
+            		<key>default</key>
+            		<real>100</real>
+            		<key>defaults</key>
+            		<string>online.transrights.glowprefs</string>
+            		<key>max</key>
+            		<real>100</real>
+            		<key>min</key>
+            		<real>1</real>
+            		<key>id</key>
+            		<string>backgroundColorTransparency</string>
+            		<key>key</key>
+            		<string>backgroundColorTransparency</string>
+            		<key>showValue</key>
+                    	<true/>
+            		<key>isSegmented</key>
+                    	<false/>
+            		<key>label</key>
+            		<string>Label Background Color Opacity</string>
 		</dict>
 	</array>
 	<key>title</key>
