@@ -10,7 +10,7 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>online.transrights.glowprefs</string>
+			<string>online.transrights.glow</string>
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
@@ -28,7 +28,7 @@
             		<key>default</key>
             		<real>100</real>
             		<key>defaults</key>
-            		<string>online.transrights.glowprefs</string>
+            		<string>online.transrights.glow</string>
             		<key>max</key>
             		<real>100</real>
             		<key>min</key>
@@ -50,43 +50,31 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>online.transrights.glowprefs</string>
+			<string>PSStaticTextCell</string>
+			<key>enabled</key>
+			<true/>
 			<key>label</key>
 			<string>Fill Color</string>
 			<key>subtitle</key>
 			<string>Override normal color. Swipe cell to set color</string>
-			<key>key</key>
-			<string>overrideColor</string>
-			<key>id</key>
-			<string>overrideColor</string>
-			<key>height</key>
-			<string>85</string>
-			<key>PostNotification</key>
-			<string>online.transrights.glowprefs/preferences.changed</string>
+		</dict>
+		<dict>
 			<key>cell</key>
-            		<string>PSSliderCell</string>
-            		<key>default</key>
-            		<real>100</real>
-            		<key>defaults</key>
-            		<string>online.transrights.glowprefs</string>
-            		<key>max</key>
-            		<real>100</real>
-            		<key>min</key>
-            		<real>1</real>
-            		<key>id</key>
-            		<string>backgroundColorTransparency</string>
-            		<key>key</key>
-            		<string>backgroundColorTransparency</string>
-            		<key>showValue</key>
-                    	<true/>
-            		<key>isSegmented</key>
-                    	<false/>
-            		<key>label</key>
-            		<string>Label Background Color Opacity</string>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>HBColorPickerTableCell</string>
+			<key>defaults</key>
+			<string>online.transrights.glow</string>
+			<key>default</key>
+			<string>#33b5e5</string>
+			<key>key</key>
+			<string>colorOneString</string>
+			<key>label</key>
+			<string>Color One</string>
+			<key>showAlphaSlider</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>online.transrights.glow/ReloadPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>

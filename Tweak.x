@@ -1,20 +1,6 @@
 #include <Foundation/Foundation.h>
 #include <UIKit/UIKit.h>
 #include <objc/runtime.h>
-/*
-Vars
-*/
-CAGradientLayer *gradientLayer;
-UIColor *colorOne;
-UIColor *colorTwo;
-UIColor *borderColor;
-/*
-Prefs
-*/
-static NSString *colorOneString;
-static NSString *colorTwoString;
-static NSString *borderColorString;
-static BOOL overrideColor;
 
 /*
 
@@ -53,6 +39,18 @@ Headers
 @property (nonatomic, retain) UIImage *image;
 @end
 
+UIColor* colorFromHexString(NSString* hexString) {
+    NSString *sexString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (![sexString containsString:@"#"]) {
+        sexString = [@"#" stringByAppendingString:sexString];
+    }
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:sexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
 /*
 
 Glow
@@ -70,7 +68,12 @@ CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundC
         setBackgroundColorTransparency = 1;
     }
 [self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:(setBackgroundColorTransparency / 100.0)]];
- return [UIColor cyanColor];
+ UIColor *ret;
+ NSString *colorString = [_preferences objectForKey:@"colorOneString"];
+ if (colorString) {
+  ret = colorFromHexString(colorString);
+ }
+ return ret ? ret : [UIColor cyanColor];
 }
 -(CALayer *)layer {
  CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
@@ -89,9 +92,4 @@ CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundC
 	} else {
 		NSLog(@"[Glow] Disabled, heading out!");
 	}
-}
-
-static void loadPreferences(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-	NSNumber *overrideColorValue = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"overrideColor" inDomain:domain];
-	overrideColor = (overrideColorValue) ? [overrideColorValue boolValue] : NO;
 }
