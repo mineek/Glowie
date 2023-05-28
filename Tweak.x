@@ -87,7 +87,6 @@ CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundC
  }
  return origLayer;
 }
-
 %end
 
 %ctor {

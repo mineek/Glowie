@@ -20,7 +20,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-        		<string>Meow</string>
+        	<string>The Best Label Customization Tweak!</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -125,6 +125,64 @@
 			<true/>
 			<key>PostNotification</key>
 			<string>online.transrights.glow/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Links</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Kota's GitHub</string>
+			<key>icon</key>
+			<string>github@2x.png</string>
+			<key>action</key>
+			<string>openGithubKota</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Snoolie's GitHub</string>
+			<key>icon</key>
+			<string>github@2x.png</string>
+			<key>action</key>
+			<string>openGithubSnoolie</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Mineek's Github</string>
+			<key>icon</key>
+			<string>github@2x.png</string>
+			<key>action</key>
+			<string>openGithubMineek</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Buy Badger!</string>
+			<key>icon</key>
+			<string>badger@2x.png</string>
+			<key>action</key>
+			<string>buyBadger</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Join our Discord</string>
+			<key>subtitle</key>
+			<string>LGBTQ+ Friendly</string>
+			<key>icon</key>
+			<string>discord@2x.png</string>
+			<key>action</key>
+			<string>transDiscord</string>
 		</dict>
 	</array>
 	<key>title</key>
