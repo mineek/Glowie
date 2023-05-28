@@ -18,6 +18,16 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>height</key>
+			<string>133</string>
+			<key>label</key>
+			<string></string>
+			<key>icon</key>
+			<string>GlowieImage.png</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
         		<string>Label Background Color Opacity</string>
@@ -54,7 +64,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>label</key>
-			<string>Fill Color</string>
+			<string>Label Text Color</string>
 			<key>subtitle</key>
 			<string>Override normal color. Swipe cell to set color</string>
 		</dict>
