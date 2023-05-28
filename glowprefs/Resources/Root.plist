@@ -118,7 +118,7 @@
 			<key>default</key>
 			<string>#33b5e5</string>
 			<key>key</key>
-			<string>colorOneString</string>
+			<string>colorTwoString</string>
 			<key>label</key>
 			<string>Border Color Selector</string>
 			<key>showAlphaSlider</key>
