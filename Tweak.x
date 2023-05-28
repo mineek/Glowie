@@ -68,20 +68,27 @@ CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundC
         setBackgroundColorTransparency = 1;
     }
 [self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:(setBackgroundColorTransparency / 100.0)]];
- UIColor *ret;
+ UIColor *one;
  NSString *colorString = [_preferences objectForKey:@"colorOneString"];
  if (colorString) {
-  ret = colorFromHexString(colorString);
+  one = colorFromHexString(colorString);
  }
- return ret ? ret : [UIColor cyanColor];
+ return one ? one : [UIColor cyanColor];
 }
+
 -(CALayer *)layer {
  CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
  origLayer.cornerRadius = 4.0; //set corner radius to 2.0
  origLayer.borderWidth = 1.0;
- origLayer.borderColor = [UIColor systemPinkColor].CGColor;
+ UIColor *ret;
+ NSString *colorString = [_preferences objectForKey:@"colorTwoString"];
+ if (colorString) {
+  ret = colorFromHexString(colorString);
+  origLayer.borderColor = ret.CGColor;
+ }
  return origLayer;
 }
+
 %end
 %ctor {
 	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glow"];

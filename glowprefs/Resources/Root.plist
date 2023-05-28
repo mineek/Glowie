@@ -18,6 +18,12 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+        		<string>Meow</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>height</key>
 			<string>133</string>
@@ -56,7 +62,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Colors</string>
+			<string>Text Colors</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -66,7 +72,7 @@
 			<key>label</key>
 			<string>Label Text Color</string>
 			<key>subtitle</key>
-			<string>Override normal color. Swipe cell to set color</string>
+			<string>Override normal color. Tap cell to set color</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -80,7 +86,41 @@
 			<key>key</key>
 			<string>colorOneString</string>
 			<key>label</key>
-			<string>Color One</string>
+			<string>Text Color Selector</string>
+			<key>showAlphaSlider</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>online.transrights.glow/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Border Colors</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>enabled</key>
+			<true/>
+			<key>label</key>
+			<string>Border Color</string>
+			<key>subtitle</key>
+			<string>Override normal color. Tap cell to set color</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>HBColorPickerTableCell</string>
+			<key>defaults</key>
+			<string>online.transrights.glow</string>
+			<key>default</key>
+			<string>#33b5e5</string>
+			<key>key</key>
+			<string>colorOneString</string>
+			<key>label</key>
+			<string>Border Color Selector</string>
 			<key>showAlphaSlider</key>
 			<true/>
 			<key>PostNotification</key>
