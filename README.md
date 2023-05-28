@@ -3,6 +3,7 @@ Glowie is an iOS 13,14,15 tweak that brings a more colorful look to your SpringB
 --------------------------------------------------------------------
 <img src="./glowprefs/Resources/GlowieImage.png" alt="Preview" />
 --------------------------------------------------------------------
+
 ## Installation
 1. Download the latest `deb` from the [releases](https://github.com/mineek/Glowie/releases) or from Kota's Repo-[Transrights.online](https://transrights.online/) with your preferred package manager.
 2. Install Glowie!
