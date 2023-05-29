@@ -15,7 +15,7 @@ Glowie is an iOS 12-16 tweak that brings a more colorful look to your Icon Label
 2. Install Glowie!
 
 ## Compatibility
-iPhone, iPad and iPod running iOS/iPadOS 13 or later
+iPhone, iPad and iPod running iOS/iPadOS 12 or later
 (rootful & rootless)
 
 ## Compiling
