@@ -35,8 +35,13 @@
                   style:UIAlertActionStyleDestructive
                 handler:^(UIAlertAction *action) {
                     NSTask *t = [[NSTask alloc] init];
-                    [t setLaunchPath:@"/var/jb/usr/bin/killall"];
-                    [t setArguments:[NSArray arrayWithObjects:@"SpringBoard", nil]];
+                    FILE *file;
+                    if ((file = fopen("/var/jb/usr/bin/sbreload","r"))) {
+                     [t setLaunchPath:@"/var/jb/usr/bin/sbreload"];
+                    } else {
+                     [t setLaunchPath:@"/usr/bin/sbreload"];
+                    }
+                    [t setArguments:nil];
                     [t launch];
                 }];
 
