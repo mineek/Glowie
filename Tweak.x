@@ -40,12 +40,12 @@ Headers
 @end
 
 UIColor* colorFromHexString(NSString* hexString) {
-    NSString *sexString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (![sexString containsString:@"#"]) {
-        sexString = [@"#" stringByAppendingString:sexString];
+    NSString *daString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (![daString containsString:@"#"]) {
+        daString = [@"#" stringByAppendingString:daString];
     }
     unsigned rgbValue = 0;
-    NSScanner *scanner = [NSScanner scannerWithString:sexString];
+    NSScanner *scanner = [NSScanner scannerWithString:daString];
     [scanner setScanLocation:1]; // bypass '#' character
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
