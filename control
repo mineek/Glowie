@@ -1,6 +1,6 @@
 Package: online.transrights.glow
 Name: Glowie
-Version: 0.6.9
+Version: 1.0.0
 Architecture: iphoneos-arm
 Description: Change your iOS label colors with Glowie!
 Maintainer: Kota

@@ -63,15 +63,10 @@ BOOL _enabled;
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
-CGFloat setBackgroundColorTransparency = [_preferences floatForKey:@"backgroundColorTransparency"];
-    if (!(setBackgroundColorTransparency >= 0)){
-        setBackgroundColorTransparency = 1;
-    }
-[self setBackgroundColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:(setBackgroundColorTransparency / 100.0)]];
-CGFloat setBackgroundColor = [_preferences floatForKey:@"backgroundColor"];
-    if (!(setBackgroundColor >= 0)){
-        setBackgroundColor = 1;
-    }
+ NSString *bgColorString = [_preferences objectForKey:@"backgroundColor"];
+ if (bgColorString) {
+  self.backgroundColor = colorFromHexString(bgColorString);
+ }
  UIColor *ret;
  NSString *colorString = [_preferences objectForKey:@"colorOneString"];
  if (colorString) {
@@ -83,12 +78,14 @@ CGFloat setBackgroundColor = [_preferences floatForKey:@"backgroundColor"];
  CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
  CGFloat setCornerRadius = [_preferences floatForKey:@"cornerRadius"];
     if (!(setCornerRadius >= 0)){
-        setCornerRadius = 1;
+        setCornerRadius = 4;
     }
+origLayer.cornerRadius = setCornerRadius;
  CGFloat setBorderWidth = [_preferences floatForKey:@"borderWidth"];
     if (!(setBorderWidth >= 0)){
-        setBorderWidth = 1;
+        setBorderWidth = 4;
     }
+origLayer.borderWidth = setBorderWidth;
  UIColor *one;
  NSString *colorString = [_preferences objectForKey:@"colorTwoString"];
  if (colorString) {
