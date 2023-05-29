@@ -2,7 +2,7 @@
 Glowie is an iOS 12-16 tweak that brings a more colorful look to your Icon Labels!!
 
 ## Features
-(Uses Alderis Color Picker)
+**(Uses Alderis Color Picker)**
   - Adjustable Border Colors for Icon Labels
   - Adjustable Background Colors for Icon Labels
   - Adjustable Text Colors for Icon Labels
