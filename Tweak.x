@@ -48,7 +48,11 @@ UIColor* colorFromHexString(NSString* hexString) {
     NSScanner *scanner = [NSScanner scannerWithString:daString];
     [scanner setScanLocation:1]; // bypass '#' character
     [scanner scanHexInt:&rgbValue];
-    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+
+    NSRange range = [hexString rangeOfString:@":" options:NSBackwardsSearch];
+    NSString* alphaString = [hexString substringFromIndex:(range.location + 1)];
+
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:[alphaString floatValue]];
 }
 
 /*
@@ -101,6 +105,10 @@ CGFloat setBackgroundColor = [_preferences floatForKey:@"backgroundColor"];
 
 %ctor {
 	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glow"];
+	[_preferences registerDefaults:@{
+		@"enabled" : @YES,
+
+	}];
 	_enabled = [_preferences boolForKey:@"enabled"];
 	if(_enabled) {
 		NSLog(@"[Glow] Enabled");
