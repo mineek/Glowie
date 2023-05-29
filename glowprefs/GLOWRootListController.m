@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "GLOWRootListController.h"
+#import <spawn.h>
 
 @implementation GLOWRootListController
 
@@ -34,15 +35,15 @@
         actionWithTitle:@"Yes"
                   style:UIAlertActionStyleDestructive
                 handler:^(UIAlertAction *action) {
-                    NSTask *t = [[NSTask alloc] init];
+                    pid_t pid;
                     FILE *file;
+                    const char* args[] = {"sbreload", NULL};
                     if ((file = fopen("/var/jb/usr/bin/sbreload","r"))) {
-                     [t setLaunchPath:@"/var/jb/usr/bin/sbreload"];
+                     fclose(file);
+                     posix_spawn(&pid, "/var/jb/usr/bin/sbreload", NULL, NULL, (char* const*)args, NULL);
                     } else {
-                     [t setLaunchPath:@"/usr/bin/sbreload"];
+                     posix_spawn(&pid, "/usr/bin/sbreload", NULL, NULL, (char* const*)args, NULL);
                     }
-                    [t setArguments:nil];
-                    [t launch];
                 }];
 
     [alert addAction:defaultAction];
@@ -50,38 +51,4 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)openGithubKota {
-	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"https://github.com/R31GNDEV"]
-	options:@{}
-	completionHandler:nil];
-}
-
--(void)openGithubSnoolie {
-	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"https://github.com/0xilis"]
-	options:@{}
-	completionHandler:nil];
-}
-
--(void)openGithubMineek {
-	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"https://github.com/mineek"]
-	options:@{}
-	completionHandler:nil];
-}
-
--(void)buyBadger {
-	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"https://havoc.app/package/badger"]
-	options:@{}
-	completionHandler:nil];
-}
-
--(void)transDiscord {
-	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"https://discord.gg/queer"]
-	options:@{}
-	completionHandler:nil];
-}
 @end
