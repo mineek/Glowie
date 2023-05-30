@@ -51,7 +51,7 @@ UIColor* colorFromHexString(NSString* hexString) {
 
     NSRange range = [hexString rangeOfString:@":" options:NSBackwardsSearch];
     NSString* alphaString;
-    if (range.location != NSNotFound || ) {
+    if (range.location != NSNotFound) {
         alphaString = [hexString substringFromIndex:(range.location + 1)];
     } else {
         alphaString = @"1.0"; //no opacity specified - just return 1 :/
