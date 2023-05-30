@@ -256,7 +256,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Join Kota's Discord!</string>
+			<string>Join Kota's Discord! (Support)</string>
 			<key>icon</key>
 			<string>discord@2x.png</string>
 			<key>action</key>
