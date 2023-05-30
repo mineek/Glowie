@@ -10,7 +10,7 @@ Glowie is an iOS 12-16 tweak that brings a more colorful look to your Icon Label
   - Adjustable Text Colors for Icon Labels
   - Adjustable Width of Borders for Icon Labels
   - Adjustable Corner Radius for Icon Labels
-<img src="./preview.png"/>
+<img size=600x200 src="./preview.png"/>
 
 ## Installation
 1. Download the latest `deb` from the [releases](https://github.com/mineek/Glowie/releases) or from Kota's Repo-[Transrights.online](https://transrights.online/) with your preferred package manager.
