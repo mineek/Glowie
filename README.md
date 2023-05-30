@@ -22,7 +22,7 @@ iPhone, iPad and iPod running iOS/iPadOS 12 or later
 
 ## Compiling
   - [Theos](https://theos.dev/) is required to compile the project
-  - Depends on [Alderis](https://github.com/hbang/Alderis)
+  - Depends on [Alderis](https://github.com/hbang/Alderis) & Legacy arm64e Support
   - You may want to edit the root `Makefile` to use your Theos SDK and toolchain
 
 ## License
