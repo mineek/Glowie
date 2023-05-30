@@ -50,7 +50,12 @@ UIColor* colorFromHexString(NSString* hexString) {
     [scanner scanHexInt:&rgbValue];
 
     NSRange range = [hexString rangeOfString:@":" options:NSBackwardsSearch];
-    NSString* alphaString = [hexString substringFromIndex:(range.location + 1)];
+    NSString* alphaString;
+    if (range.location != NSNotFound || ) {
+        alphaString = [hexString substringFromIndex:(range.location + 1)];
+    } else {
+        alphaString = @"1.0"; //no opacity specified - just return 1 :/
+    }
 
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:[alphaString floatValue]];
 }
