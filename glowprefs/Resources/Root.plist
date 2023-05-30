@@ -256,9 +256,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Join our Discord</string>
-			<key>subtitle</key>
-			<string>LGBTQ+ Friendly</string>
+			<string>Join Kota's Discord!</string>
 			<key>icon</key>
 			<string>discord@2x.png</string>
 			<key>action</key>
