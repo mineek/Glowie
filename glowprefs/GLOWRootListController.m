@@ -51,4 +51,39 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(void)openGithubKota {
+    [[UIApplication sharedApplication]
+    openURL:[NSURL URLWithString:@"https://github.com/R31GNDEV"]
+    options:@{}
+    completionHandler:nil];
+}
+
+-(void)openGithubSnoolie {
+    [[UIApplication sharedApplication]
+    openURL:[NSURL URLWithString:@"https://github.com/0xilis"]
+    options:@{}
+    completionHandler:nil];
+}
+
+-(void)openGitHubMineek {
+    [[UIApplication sharedApplication]
+    openURL:[NSURL URLWithString:@"https://github.com/mineek/Glowie"]
+    options:@{}
+    completionHandler:nil];
+}
+
+-(void)buyBadger {
+	[[UIApplication sharedApplication]
+	openURL:[NSURL URLWithString:@"https://havoc.app/package/badger"]
+	options:@{}
+	completionHandler:nil];
+}
+
+-(void)transDiscord {
+	[[UIApplication sharedApplication]
+	openURL:[NSURL URLWithString:@"https://discord.gg/queer"]
+	options:@{}
+	completionHandler:nil];
+}
+
 @end

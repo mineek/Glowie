@@ -50,7 +50,12 @@ UIColor* colorFromHexString(NSString* hexString) {
     [scanner scanHexInt:&rgbValue];
 
     NSRange range = [hexString rangeOfString:@":" options:NSBackwardsSearch];
-    NSString* alphaString = [hexString substringFromIndex:(range.location + 1)];
+    NSString* alphaString;
+    if (range.location != NSNotFound ) {
+        alphaString = [hexString substringFromIndex:(range.location + 1)];
+    } else {
+        alphaString = @"1.0"; //no opacity specified - just return 1 :/
+    }
 
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:[alphaString floatValue]];
 }
@@ -67,36 +72,37 @@ BOOL _enabled;
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
- NSString *bgColorString = [_preferences objectForKey:@"backgroundColor"];
- if (bgColorString) {
-  self.backgroundColor = colorFromHexString(bgColorString);
- }
- UIColor *ret;
- NSString *colorString = [_preferences objectForKey:@"colorOneString"];
- if (colorString) {
-  ret = colorFromHexString(colorString);
- }
- return ret ? ret : [UIColor cyanColor];
+  NSString *bgColorString = [_preferences objectForKey:@"backgroundColor"];
+  if (bgColorString) {
+    self.backgroundColor = colorFromHexString(bgColorString);
+  }
+  UIColor *ret;
+  NSString *colorString = [_preferences objectForKey:@"colorOneString"];
+  NSLog(@"[*]Glowie: %@",colorString);
+  if (colorString) {
+    ret = colorFromHexString(colorString);
+  }
+  return ret ? ret : [UIColor cyanColor];
 }
 -(CALayer *)layer {
- CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
- CGFloat setCornerRadius = [_preferences floatForKey:@"cornerRadius"];
-    if (!(setCornerRadius >= 0)){
-        setCornerRadius = 4;
-    }
-origLayer.cornerRadius = setCornerRadius;
- CGFloat setBorderWidth = [_preferences floatForKey:@"borderWidth"];
-    if (!(setBorderWidth >= 0)){
-        setBorderWidth = 4;
-    }
-origLayer.borderWidth = setBorderWidth;
- UIColor *one;
- NSString *colorString = [_preferences objectForKey:@"colorTwoString"];
- if (colorString) {
-  one = colorFromHexString(colorString);
-  origLayer.borderColor = one.CGColor;
- }
- return origLayer;
+  CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
+  CGFloat setCornerRadius = [_preferences floatForKey:@"cornerRadius"];
+  if (!(setCornerRadius >= 0)){
+    setCornerRadius = 1;
+  }
+  origLayer.cornerRadius = setCornerRadius;
+  CGFloat setBorderWidth = [_preferences floatForKey:@"borderWidth"];
+  if (!(setBorderWidth >= 0)){
+    setBorderWidth = 1;
+  }
+  origLayer.borderWidth = setBorderWidth;
+  UIColor *one;
+  NSString *colorString = [_preferences objectForKey:@"colorTwoString"];
+  if (colorString) {
+    one = colorFromHexString(colorString);
+    origLayer.borderColor = one.CGColor;
+  }
+  return origLayer;
 }
 %end
 
