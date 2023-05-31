@@ -1,13 +1,23 @@
 #include <Foundation/Foundation.h>
 #include <UIKit/UIKit.h>
 #include <objc/runtime.h>
-
 /*
+                                                                                                           
+ ██████╗ ██╗      ██████╗ ██╗    ██╗██╗███████╗                                                                                                                                                    
+██╔════╝ ██║     ██╔═══██╗██║    ██║██║██╔════╝                                                                                                                                                    
+██║  ███╗██║     ██║   ██║██║ █╗ ██║██║█████╗                                                                                                                                                      
+██║   ██║██║     ██║   ██║██║███╗██║██║██╔══╝                                                                                                                                                      
+╚██████╔╝███████╗╚██████╔╝╚███╔███╔╝██║███████╗                                                                                                                                                    
+ ╚═════╝ ╚══════╝ ╚═════╝  ╚══╝╚══╝ ╚═╝╚══════╝
+Created by: 
+  - Kota
+  - Snoolie
+  - Mineek
 
-Headers
 
+
+    Let's Start with some Headers!
 */
-
 @interface _UILegibilityView : UIView {
 	BOOL _hidesImage;
 	UIImage* _image;
@@ -31,13 +41,29 @@ Headers
 @property (copy, nonatomic) UIColor *pinColor;
 @property (nonatomic) CGFloat pinColorAlpha; 
 @property (nonatomic) CGFloat bodyColorAlpha;
+@property CGFloat shadowRadius;
+@property float shadowOpacity;
+@property CGColorRef shadowColor;
 - (id)_labelborderFillColor;
 - (id)_labelTextColor;
 @end
 
+/*
+
+Attach to the view
+
+*/
+
+
 @interface SBIconLegibilityLabelView : _UILegibilityView
 @property (nonatomic, retain) UIImage *image;
 @end
+
+/*
+
+Convert our Color HEX
+
+*/
 
 UIColor* colorFromHexString(NSString* hexString) {
     NSString *daString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -59,16 +85,19 @@ UIColor* colorFromHexString(NSString* hexString) {
 
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:[alphaString floatValue]];
 }
-
 /*
 
-Glow
+Define preferences
 
 */
 NSUserDefaults *_preferences;
 BOOL _enabled;
 
+/*
 
+Our Hook Below
+
+*/
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
@@ -84,6 +113,11 @@ BOOL _enabled;
   }
   return ret ? ret : [UIColor cyanColor];
 }
+/*
+
+More method magic
+
+*/
 -(CALayer *)layer {
   CALayer *origLayer = %orig; //our origLayer is what this method would have originally returned
   CGFloat setCornerRadius = [_preferences floatForKey:@"cornerRadius"];
@@ -99,13 +133,29 @@ BOOL _enabled;
   UIColor *one;
   NSString *colorString = [_preferences objectForKey:@"colorTwoString"];
   if (colorString) {
+    NSLog(@"[*]We Set Border Colors!: %@",colorString);
     one = colorFromHexString(colorString);
     origLayer.borderColor = one.CGColor;
+  }
+  origLayer.shadowOffset = CGSizeMake(4.0f,-4.0f);
+  origLayer.shadowRadius = 3.0;
+  origLayer.shadowOpacity = 0.5;
+  NSString *shadowColorString = [_preferences objectForKey:@"shadowColor"];
+  NSLog(@"[*]Real Glow Started: %@",shadowColorString);
+  if (shadowColorString) {
+   origLayer.shadowColor = colorFromHexString(shadowColorString).CGColor; 
+  }
+  else {
+    NSLog(@"[*]Glowie failed: %@",shadowColorString);
   }
   return origLayer;
 }
 %end
+/*
 
+Attach to preferences & Enable it.
+
+*/
 %ctor {
 	_preferences = [[NSUserDefaults alloc] initWithSuiteName:@"online.transrights.glow"];
 	[_preferences registerDefaults:@{
