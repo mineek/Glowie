@@ -160,27 +160,31 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Corner Radius Settings</string>
+			<string>Border Corner Radius Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
             <string>PSSliderCell</string>
-            <key>default</key>
-            <real>1</real>
-            <key>defaults</key>
-            <string>online.transrights.glow</string>
-            <key>max</key>
-            <real>4</real>
-            <key>min</key>
-            <real>1</real>
-            <key>id</key>
-            <string>cornerRadius</string>
-            <key>key</key>
-            <string>cornerRadius</string>
-            <key>showValue</key>
-            <true/>
-            <key>isSegmented</key>
-            <true/>
+            <key>cellClass</key>
+			<string>GLOWLabeledSliderCell</string>
+			<key>defaults</key>
+			<string>online.transrights.glow</string>
+			<key>key</key>
+			<string>cornerRadius</string>
+			<key>default</key>
+			<string>5</string>
+			<key>min</key>
+			<string>1</string>
+			<key>max</key>
+			<string>10</string>
+			<key>isSegmented</key>
+			<true/>
+			<key>label</key>								<!-- The label will be used for the label above the slider -->
+			<string>Corner Radius</string>
+			<key>cornerRadius</key>		<!-- Optional key used for localization -->
+			<string>Root</string>
+			<key>PostNotification</key>
+			<string>online.transrights.glow/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -191,22 +195,56 @@
 		<dict>
 			<key>cell</key>
             <string>PSSliderCell</string>
-            <key>default</key>
-            <real>1</real>
-            <key>defaults</key>
-            <string>online.transrights.glow</string>
-            <key>max</key>
-            <real>4</real>
-            <key>min</key>
-            <real>1</real>
-            <key>id</key>
-            <string>borderWidth</string>
-            <key>key</key>
-            <string>borderWidth</string>
-            <key>showValue</key>
-            <true/>
-            <key>isSegmented</key>
-            <true/>
+            <key>cellClass</key>
+			<string>GLOWLabeledSliderCell</string>
+			<key>defaults</key>
+			<string>online.transrights.glow</string>
+			<key>key</key>
+			<string>borderWidth</string>
+			<key>default</key>
+			<string>4</string>
+			<key>min</key>
+			<string>1</string>
+			<key>max</key>
+			<string>8</string>
+			<key>isSegmented</key>
+			<true/>
+			<key>label</key>								<!-- The label will be used for the label above the slider -->
+			<string>Border Width</string>
+			<key>borderWidth</key>		<!-- Optional key used for localization -->
+			<string>Root</string>
+			<key>PostNotification</key>
+			<string>online.transrights.glow/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Glow Radius Settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>cellClass</key>
+			<string>GLOWLabeledSliderCell</string>
+			<key>defaults</key>
+			<string>online.transrights.glow</string>
+			<key>key</key>
+			<string>shadowRadius</string>
+			<key>default</key>
+			<string>4</string>
+			<key>min</key>
+			<string>0</string>
+			<key>max</key>
+			<string>8</string>
+			<key>isSegmented</key>
+			<true/>
+			<key>label</key>								<!-- The label will be used for the label above the slider -->
+			<string>Shadow Radius</string>
+			<key>shadowRadius</key>		<!-- Optional key used for localization -->
+			<string>Root</string>
+			<key>PostNotification</key>
+			<string>online.transrights.glow/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>

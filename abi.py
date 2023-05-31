@@ -21,7 +21,7 @@ def handle_file(file):
 
     if header == IOS13_HEADER:
         print(f'converting "{file.name}" CPU Subtype from iOS13 (00000002) to iOS14 (80000002)')
-        print(f'Yay for Glowie!! :3, congratulations on using abi to build your package! (I think its a success!)')
+        print(f'Yay for Pink Clock!! :3, congratulations on using abi to build your package! (I think its a success!)')
         file.write_bytes(IOS14_HEADER + buf)
     elif header == IOS14_HEADER:
         print(f'converting "{file.name}" CPU Subtype from iOS14 (80000002) to iOS13 (00000002)')

@@ -137,9 +137,13 @@ More method magic
     one = colorFromHexString(colorString);
     origLayer.borderColor = one.CGColor;
   }
-  origLayer.shadowOffset = CGSizeMake(4.0f,-4.0f);
-  origLayer.shadowRadius = 3.0;
-  origLayer.shadowOpacity = 0.5;
+  origLayer.shadowOffset = CGSizeMake(0.0f,4.0f);
+  CGFloat setShadowRadius = [_preferences floatForKey:@"shadowRadius"];
+  if (!(setShadowRadius >= 0)){
+    setShadowRadius = 1;
+  }
+  origLayer.shadowRadius = setShadowRadius;
+  origLayer.shadowOpacity = 1;
   NSString *shadowColorString = [_preferences objectForKey:@"shadowColor"];
   NSLog(@"[*]Real Glow Started: %@",shadowColorString);
   if (shadowColorString) {
