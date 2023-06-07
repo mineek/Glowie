@@ -85,11 +85,9 @@ UIColor* colorFromHexString(NSString* hexString) {
 
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:[alphaString floatValue]];
 }
+
+
 /*
-
-Define preferences
-
-*/
 NSUserDefaults *_preferences;
 BOOL _enabled;
 
@@ -98,6 +96,7 @@ BOOL _enabled;
 Our Hook Below
 
 */
+
 %hook SBIconLegibilityLabelView
 //this method is for _UILegibilityView and we return the color we want the label to be
 -(UIColor *)drawingColor {
