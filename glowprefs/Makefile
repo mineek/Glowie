@@ -11,6 +11,6 @@ glowprefs_PRIVATE_FRAMEWORKS = Preferences
 glowprefs_INSTALL_PATH = /Library/PreferenceBundles
 glowprefs_CFLAGS = -fobjc-arc
 glowprefs_LIBRARIES = colorpicker
-# glowprefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs Alderis
+glowprefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs Alderis
 
 include $(THEOS_MAKE_PATH)/bundle.mk

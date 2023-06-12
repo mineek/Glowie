@@ -87,7 +87,7 @@ UIColor* colorFromHexString(NSString* hexString) {
 }
 
 
-/*
+
 NSUserDefaults *_preferences;
 BOOL _enabled;
 
